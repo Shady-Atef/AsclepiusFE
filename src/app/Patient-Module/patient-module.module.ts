@@ -5,7 +5,7 @@ import { PatientProfileComponent } from './components/patient-profile/patient-pr
 import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 
 @NgModule({
-  declarations: [PatientProfileComponent],
+  declarations: [PatientProfileComponent, CreatePatientComponent],
   imports: [CommonModule, PatientRoutingModule],
 })
 export class PatientModuleModule {}
