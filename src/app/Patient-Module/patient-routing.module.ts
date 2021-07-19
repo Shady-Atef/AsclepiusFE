@@ -1,16 +1,15 @@
-import { PatientProfileComponent } from './Components/patient-profile/patient-profile.component';
+import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
+import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'PatientProfile', component: PatientProfileComponent }
+  { path: 'create-patient', component: CreatePatientComponent },
+  { path: 'patient-profile', component: PatientProfileComponent },
 ];
+
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class PatientRoutingModule { }
+export class PatientRoutingModule {}
