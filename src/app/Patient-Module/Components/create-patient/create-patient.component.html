@@ -1,1 +1,95 @@
-<p>create-patient works!</p>
+<div>
+  <div class="col-8 my-2 d-flex justify-content-start">
+    <div class="title">
+      <h3 class="mat-headline m-0 text-center text-md-left am-text-primary-900">
+        {{ "CreateNewComplaint" }}
+      </h3>
+    </div>
+  </div>
+
+  <div class="col-12 my-2">
+    <div class="table-list">
+      <!-- advanced filters -->
+      <form
+        #complaintForm="ngForm"
+        (ngSubmit)="complaintForm.form.valid && createPatient()"
+      >
+        <div class="advanced-filters my-2">
+          <div class="content-box-wrapper bg-white p-3">
+            <div class="filters">
+              <div class="row">
+                <div class="col-lg-6">
+                  <!--   shimpent Tracking Number -->
+                  <div class="col-lg-12">
+                    <div class="title">
+                      <h6 class="mb-1 am-text-primary-900 mat-body-2">
+                        {{ "ShimpentTrackingNumber" }}
+                        <span style="color: red">*</span>
+                      </h6>
+                    </div>
+                    <div class="selection">
+                      <div class="from my-1">
+                        <div class="dateInput position-relative">
+                          <input
+                            [(ngModel)]="patient.FirstName"
+                            class="w-100 py-1 px-1"
+                            required
+                            name="trackingNumber"
+                            maxlength="11"
+                          />
+                          <div class="text-danger" *ngIf="true">
+                            {{ "ShipmentNumberDoesNotExists" }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="exception d-block">
+              <div class="text-danger" *ngIf="ERROR">
+                {{ ERROR }}
+              </div>
+            </div>
+            <!-- Buttons -->
+            <div class="buttons-wrapper mt-3">
+              <div class="row">
+                <div
+                  class="
+                    col-12
+                    my-2
+                    text-center
+                    px-4
+                    d-flex
+                    justify-content-end
+                    align-items-center
+                  "
+                >
+                  <div class="each-button mx-2 my-2">
+                    <button
+                      type="submit"
+                      mat-raised-button
+                      class="w-100 px-1 am-bg-primary-900 am-text-warn-100"
+                    >
+                      {{ "SubmitComplaint" }}
+                    </button>
+                  </div>
+                  <div class="each-button my-2">
+                    <a
+                      routerLink="/complaint/complaints-list"
+                      mat-raised-button
+                      class="w-100 px-1 am-bg-warn-300 am-text-primary-900"
+                    >
+                      {{ "Cancel" }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

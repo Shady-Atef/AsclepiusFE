@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Imhotep';
+  isArabic: boolean = false;
+  isLoading = false;
+  showMenu: boolean = false;
+  logged: boolean = false;
+  imageShow: boolean = false;
+  imageList: string[] = [];
+  NotificationSubscription = new Subscription();
 }

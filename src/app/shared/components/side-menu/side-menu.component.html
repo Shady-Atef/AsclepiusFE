@@ -1,0 +1,407 @@
+<p>side-menu works!</p>
+<div class="row no-gutters">
+  <!-- Header -->
+  <div class="col-12">
+    <div class="header-wrapper w-100">
+      <div class="header-bg w-100 h-100"></div>
+      <div class="header-content p-2">
+        <div class="row">
+          <!-- Logo / Close Menu -->
+          <div class="col-12 d-flex align-items-center">
+            <!-- Logo -->
+            <div class="logo-wrapper mx-auto">
+              <img src="../../../assets/images/logo.png" alt="" />
+            </div>
+
+            <div
+              class="close-icon-wrapper mt-2 justify-content-end"
+              *ngIf="showMenu"
+              (click)="menuToggle()"
+            >
+              <mat-icon class="am-text-warn-100"> close </mat-icon>
+            </div>
+          </div>
+
+          <!-- Image / Profile / Name / Role -->
+          <div class="col-12">
+            <div class="profile-info-wrapper align-items-center">
+              <div class="image-wrapper">
+                <!-- <img src="../../assets/images/headerbg.png" alt="" /> -->
+                <img
+                  class="w-100 profile-img"
+                  src="../../assets/images/dimed-User.png"
+                  alt="staff image"
+                />
+                <img class="w-100 profile-img" alt="staff image" />
+              </div>
+              <div class="name-role-wrapper mx-3">
+                <h6 class="mat-title am-text-warn-100 mb-0"></h6>
+                <p class="am-text-warn-500 mat-subheading-1 mb-1">
+                  UserData?.RoleEn }}
+                </p>
+              </div>
+              <div class="more-options justify-content-end mx-auto d-none">
+                <mat-icon class="am-text-warn-100"> expand_more </mat-icon>
+              </div>
+            </div>
+          </div>
+
+          <!-- Options / Buttons  -->
+          <div
+            class="col-12 d-flex align-items-center justify-content-center my-4"
+          >
+            <div class="home-wrapper clickable" [matMenuTriggerFor]="menu">
+              <!-- <mat-icon class="am-text-warn-100">
+                                language
+                            </mat-icon> -->
+              <img
+                src="assets/images/settings-menu.svg"
+                class="w-50 m-auto"
+                alt=""
+              />
+            </div>
+            <mat-menu #menu="matMenu">
+              <div mat-menu-item>
+                <mat-icon>language</mat-icon>
+                <span class="mat-body-2">{{ "ChangeLanguage" }}</span>
+              </div>
+              <div mat-menu-item routerLink="user/change-password">
+                <mat-icon>vpn_key</mat-icon>
+                <span class="mat-body-2"> {{ "ChangePassword" }}</span>
+              </div>
+              <div mat-menu-item routerLink="user/notifications-settings">
+                <mat-icon>edit_notifications</mat-icon>
+                <span class="mat-body-2">
+                  {{ "Notifications Settings" }}
+                </span>
+              </div>
+            </mat-menu>
+            <div
+              class="notifications-wrapper mx-5 d-flex clickable"
+              [matMenuTriggerFor]="notifications"
+            >
+              <!-- <mat-icon class="am-text-warn-100">
+                                notifications_none
+                            </mat-icon> -->
+
+              <div class="notify-wrapper d-flex">
+                <div class="am-bg-accent-700 mb-0 m-auto number-wrapper">
+                  <p
+                    class="
+                      number
+                      text-center
+                      mb-0
+                      am-text-primary-900
+                      mat-body-2
+                      overflow-hidden
+                      w-100
+                    "
+                  >
+                    ficationsCount }}
+                  </p>
+                </div>
+              </div>
+              <img
+                src="assets/images/notifications-menu.svg"
+                class="w-50 m-auto"
+                alt=""
+              />
+
+              <mat-menu class="notification-list" #notifications="matMenu">
+              </mat-menu>
+            </div>
+            <div
+              class="setting-wrapper d-flex clickable"
+              routerLink="/shipment/shipment-list"
+            >
+              <img
+                src="assets/images/home-menu.svg"
+                class="w-50 m-auto"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Items / Options  -->
+  <div class="col-12">
+    <div class="menu-items-list-wrapper">
+      <a routerLink="/user/account-list">
+        <div
+          class="each-item d-flex align-items-center"
+          [routerLinkActive]="['active']"
+          (click)="menuToggle()"
+        >
+          <div class="icon">
+            <mat-icon class="am-text-primary-900 mx-2">
+              supervisor_account
+            </mat-icon>
+          </div>
+          <div class="content-wrapper w-100">
+            <div class="item-content">
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "AccountList" }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a routerLink="/shipment/shipment-list">
+        <div
+          class="each-item d-flex align-items-center"
+          [routerLinkActive]="['active']"
+          (click)="menuToggle()"
+        >
+          <div class="icon">
+            <!-- <mat-icon class="am-text-primary-900 mx-2">
+                supervisor_account
+            </mat-icon> -->
+            <img
+              class="mx-2"
+              src="../../assets/images/shipment-management.svg"
+              alt=""
+            />
+          </div>
+          <div class="content-wrapper w-100">
+            <div class="item-content">
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "AllShipments" }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-- report module -->
+      <div class="expanded-item">
+        <div class="each-item d-flex align-items-start" (click)="expandMenu()">
+          <div class="icon">
+            <mat-icon class="am-text-primary-900 mx-2"> history </mat-icon>
+          </div>
+          <div class="content-wrapper w-100">
+            <div
+              class="
+                item-content
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "report" }}
+              </h6>
+              <mat-icon
+                class="mx-2 am-text-primary-900"
+                [class.showExpand]="!expandedMenu"
+              >
+                expand_less
+              </mat-icon>
+            </div>
+            <div class="expanded-menu" *ngIf="expandedMenu">
+              <a routerLink="/report/roader-delivery-performance">
+                <div
+                  class="each-exp-item d-flex align-items-center"
+                  [routerLinkActive]="['active']"
+                  (click)="menuToggle()"
+                >
+                  <div class="icon-exp">
+                    <mat-icon class="am-text-primary-900 mx-2">
+                      history
+                    </mat-icon>
+                  </div>
+                  <div
+                    class="
+                      item-content
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                      {{ "RoaderDeliveryPerformance" }}
+                    </h6>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end report module -->
+      <!-- Start Complain Module -->
+      <a routerLink="/complaint/complaints-list">
+        <div
+          class="each-item d-flex align-items-center"
+          [routerLinkActive]="['active']"
+          (click)="menuToggle()"
+        >
+          <div class="icon">
+            <!-- <mat-icon class="am-text-primary-900 mx-2">
+    supervisor_account
+</mat-icon> -->
+            <img
+              class="mx-2"
+              src="../../assets/images/shipment-management.svg"
+              alt=""
+            />
+          </div>
+          <div class="content-wrapper w-100">
+            <div class="item-content">
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "Complaints" }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-- End Complain Module -->
+      <a routerLink="/announcement/create-new-announcement">
+        <div
+          class="each-item d-flex align-items-center"
+          [routerLinkActive]="['active']"
+          (click)="menuToggle()"
+        >
+          <div class="icon">
+            <!-- <mat-icon class="am-text-primary-900 mx-2">
+    supervisor_account
+</mat-icon> -->
+            <img
+              class="mx-2"
+              src="../../assets/images/shipment-management.svg"
+              alt=""
+            />
+          </div>
+          <div class="content-wrapper w-100">
+            <div class="item-content">
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "Announcement" }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a routerLink="/roader/registration-list">
+        <div
+          class="each-item d-flex align-items-center"
+          [routerLinkActive]="['active']"
+          (click)="menuToggle()"
+        >
+          <div class="icon">
+            <mat-icon class="am-text-primary-900 mx-2">
+              switch_account
+            </mat-icon>
+          </div>
+          <div class="content-wrapper w-100">
+            <div class="item-content">
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "RegistrationList" }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <div class="expanded-item">
+        <div class="each-item d-flex align-items-start" (click)="expandMenu()">
+          <div class="icon">
+            <mat-icon class="am-text-primary-900 mx-2"> history </mat-icon>
+            <!-- <img class="mx-2" src="../../assets/images/shipment-management.svg" alt="" /> -->
+          </div>
+          <div class="content-wrapper w-100">
+            <div
+              class="
+                item-content
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                {{ "Logs" }}
+              </h6>
+              <mat-icon
+                class="mx-2 am-text-primary-900"
+                [class.showExpand]="!expandedMenu"
+              >
+                expand_less
+              </mat-icon>
+            </div>
+            <div class="expanded-menu" *ngIf="expandedMenu">
+              <a routerLink="/audit/audit-list">
+                <div
+                  class="each-exp-item d-flex align-items-center"
+                  [routerLinkActive]="['active']"
+                  (click)="menuToggle()"
+                >
+                  <div class="icon-exp">
+                    <mat-icon class="am-text-primary-900 mx-2">
+                      history
+                    </mat-icon>
+                  </div>
+                  <div
+                    class="
+                      item-content
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    "
+                  >
+                    <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                      {{ "AuditLogs" }}
+                    </h6>
+                  </div>
+                </div>
+              </a>
+
+              <a routerLink="/complaint/complaint-logs">
+                <div
+                  class="each-item d-flex align-items-center"
+                  [routerLinkActive]="['active']"
+                  (click)="menuToggle()"
+                >
+                  <div class="icon">
+                    <!-- <mat-icon class="am-text-primary-900 mx-2">
+            supervisor_account
+        </mat-icon> -->
+                    <mat-icon class="am-text-primary-900 mx-2">
+                      history
+                    </mat-icon>
+                  </div>
+                  <div class="content-wrapper w-100">
+                    <div class="item-content">
+                      <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+                        {{ "ComplaintsLogs" }}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="each-item d-flex align-items-center">
+        <div class="icon">
+          <mat-icon class="am-text-primary-900 mx-2"> logout </mat-icon>
+        </div>
+        <div class="content-wrapper w-100">
+          <div class="item-content">
+            <h6 class="my-2 am-text-primary-900 mat-subheading-2">
+              {{ "Logout" }}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-rights-wrapper text-center">
+      <h6 class="am-text-primary-300 mat-body-2">&copy; 2021</h6>
+      <h6 class="am-text-primary-300 mat-body-2">
+        {{ "CopyWrite" }}
+      </h6>
+    </div>
+  </div>
+</div>
